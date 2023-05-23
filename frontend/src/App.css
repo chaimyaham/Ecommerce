@@ -1,2 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+
+:root{
+    --primary-color-red:#E20001;
+    --secondary-color-white:#FFF5F0;
+    --dark-color:#281713;
+    --neutral-color:#BA8475;
+}

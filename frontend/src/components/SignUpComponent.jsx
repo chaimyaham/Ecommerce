@@ -12,7 +12,7 @@ const SignUpComponent = () => {
   const [visible, setVisible] = useState(false);
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState(null);
-  // const navigate=useNavigate()
+  const navigate=useNavigate()
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -34,9 +34,9 @@ const SignUpComponent = () => {
       setAvatar(null)
 
 
-      // if(res.data.success === true){
-      //   navigate('/')
-      // }
+      if(res.data.success === true){
+        navigate('/login')
+      }
     }).catch((err)=>{
       toast.error(err.response.data.message)
      
