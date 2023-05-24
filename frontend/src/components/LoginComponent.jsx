@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../server";
 import { toast } from "react-toastify";
+import "../styles/login.css";
 
 const LoginComponent = () => {
   const [email, setEmail] = useState("");
@@ -25,11 +26,11 @@ const LoginComponent = () => {
   }
 
   return (
-    <div>
-      <h2>Login to your account</h2>
+    <div className="loginContainer">
+      <h2>Login </h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
+        <div className="group">
+          <label htmlFor="email">Email :</label>
           <input
             type="email"
             name="email"
@@ -39,8 +40,8 @@ const LoginComponent = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="password">password</label>
+        <div className="group">
+          <label htmlFor="password">Password :</label>
           <input
             type={visible ? "text" : "password"}
             name="password"
@@ -50,24 +51,26 @@ const LoginComponent = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           {visible ? (
-            <AiOutlineEye onClick={() => setVisible(false)} />
+            <AiOutlineEye style={{ position:"absolute", right:"50px",marginTop:"30px",color:"black",fontSize:"20px",cursor:"pointer"}}  onClick={() => setVisible(false)} />
           ) : (
-            <AiOutlineEyeInvisible onClick={() => setVisible(true)} />
+            <AiOutlineEyeInvisible style={{ position:"absolute", right:"50px",marginTop:"30px",color:"black",fontSize:"20px",cursor:"pointer"}} onClick={() => setVisible(true)} />
           )}
         </div>
-        <div>
-            <div><input type="checkbox" name="remember-me" id="remember-me" />
-            <label htmlFor="remember-me">Remember me</label></div>
-            <a href="#">Forgot yout password?</a>
+        <div className=" groupforgot">
+            <div className="checkgroup">
+            <input className="check" type="checkbox" name="remember-me" id="remember-me" />
+            <label htmlFor="remember-me"> Remember me</label>
+            </div>
+            <a className="fgp" href="#">Forgot yout password?</a>
         </div>
-        <div>
-            <button type="submit">
+        <div className="group">
+            <button className="btnLogin" type="submit">
                 Login
             </button>
         </div>
       </form>
-      <div>
-        <h4>Not have any account?  <Link to='/sign-up'>Sign up.</Link></h4>
+      <div className="more">
+        <h4>Not have any account?  <Link className="link" to='/sign-up'>Sign up.</Link></h4>
        
       </div>
     </div>

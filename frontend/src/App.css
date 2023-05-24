@@ -1,10 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Marcellus&family=Poppins:wght@400;500;600;700;800;900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --font-family-abril: "Abril Fatface", cursive;
+  --font-family-marcellus: "Marcellus", serif;
+  --font-family-poppins: "Poppins", sans-serif;
+}
 
-
-:root{
-    --primary-color-red:#E20001;
-    --secondary-color-white:#FFF5F0;
-    --dark-color:#281713;
-    --neutral-color:#BA8475;
+.loginPageMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../public/bg2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+.signupPageMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../public/bg3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }

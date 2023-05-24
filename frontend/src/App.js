@@ -3,8 +3,8 @@ import "./App.css";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ActivationPage from "./pages/ActivationPage";
-import { ToastContainer, toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 // import { server } from "./server";
 // import axios from "axios";
@@ -13,8 +13,7 @@ import { loadUser } from "./redux/actions/user";
 import Home from "./pages/Home";
 
 function App() {
-  useEffect(()=>{
-
+  useEffect(() => {
     // axios.get(`${server}/user/getuser`,{withCredentials:true}).then((res)=>{
     //  toast.success(res.data.message);
     // }).catch((err)=>{
@@ -22,8 +21,7 @@ function App() {
     // });
 
     Store.dispatch(loadUser());
-
-  },[])
+  }, []);
 
   return (
     <>
@@ -37,7 +35,7 @@ function App() {
         />
       </Routes>
       <ToastContainer
-        position="bottom-center"
+        position="top-center"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}

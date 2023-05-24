@@ -5,6 +5,7 @@ import { RxAvatar } from "react-icons/rx";
 import axios from "axios"; 
 import {server}from "../server"
 import { toast } from "react-toastify";
+import '../styles/signUp.css';
 
 const SignUpComponent = () => {
   const [email, setEmail] = useState("");
@@ -50,11 +51,11 @@ const SignUpComponent = () => {
   };
 
   return (
-    <div>
+    <div className="signUpContainer">
       <h2>Sign up</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Full Name</label>
+        <div  className="group">
+          <label htmlFor="name">Full Name :</label>
           <input
             type="text"
             name="name"
@@ -64,8 +65,8 @@ const SignUpComponent = () => {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="email">Email Adress</label>
+        <div className="group">
+          <label htmlFor="email">Email Adress :</label>
           <input
             type="email"
             name="email"
@@ -75,8 +76,8 @@ const SignUpComponent = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="password">password</label>
+        <div className="group">
+          <label htmlFor="password">Password :</label>
           <input
             type={visible ? "text" : "password"}
             name="password"
@@ -86,34 +87,37 @@ const SignUpComponent = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           {visible ? (
-            <AiOutlineEye onClick={() => setVisible(false)} />
+            <AiOutlineEye style={{ position:"absolute", right:"50px",marginTop:"30px",color:"black",fontSize:"20px",cursor:"pointer"}} onClick={() => setVisible(false)} />
           ) : (
-            <AiOutlineEyeInvisible onClick={() => setVisible(true)} />
+            <AiOutlineEyeInvisible style={{ position:"absolute", right:"50px",marginTop:"30px",color:"black",fontSize:"20px",cursor:"pointer"}} onClick={() => setVisible(true)} />
           )}
         </div>
-        <div>
+        <div className=" group ">
           <label htmlFor="avatar">Avatar : </label>
+          <div className="groupAvatar">
           <span>
             {avatar ? (
-              <img src={URL.createObjectURL(avatar)} alt="avatar" />
+              <img className="imgAvatar" src={URL.createObjectURL(avatar)} alt="avatar" />
             ) : (
-              <RxAvatar />
+              <RxAvatar style={{fontSize:"50px"}}/>
             )}
           </span>
           <label htmlFor="file-input">
             <span>UploadFile</span>
             <input type="file" name="avatar" id="file-input" accept=".jpg, .jpeg, .png" onChange={(e)=>handleFileInput(e)} />
           </label>
+          </div>
+        
         </div>
-        <div>
+        <div className="group">
           <button type="submit">
             sign up
           </button>
         </div>
       </form>
-      <div>
+      <div className="more">
         <h4>
-          have already an account? <Link to="/login">Login.</Link>
+          have already an account? <Link className="link" to="/login">Login.</Link>
         </h4>
       </div>
     </div>
