@@ -10,8 +10,9 @@ import { useEffect } from "react";
 // import axios from "axios";
 import Store from "./redux/store";
 import { loadUser } from "./redux/actions/user";
-import Home from "./pages/Home";
+import Home from './pages/Home'
 import Products from "./pages/Products";
+
 
 function App() {
   useEffect(() => {
@@ -28,9 +29,10 @@ function App() {
     <>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/products" element={<Products/>} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/product" element={<Products />} />
+        
         <Route
           path="/activation/:activationToken"
           element={<ActivationPage />}

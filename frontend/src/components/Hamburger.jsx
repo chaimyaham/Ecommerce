@@ -7,10 +7,10 @@ import essawira from '../images/beautiful-girl-traditional-carpet-shop-goreme-ci
 
 const cities=[
   {
-    name:'Kech',image:kech
+    name:'Event1',image:kech
   },
   {
-    name:'Essaouira',image:essawira
+    name:'Event2',image:essawira
   },
 ]
 
@@ -25,13 +25,14 @@ const Hamburger = ({ state }) => {
   let line1 = useRef(null);
   let line2 = useRef(null);
   let line3 = useRef(null);
+  let line4 = useRef(null);
   let info = useRef(null);
 
   useEffect(() => {
     if (state.clicked === false) {
       // close Menu
        gsap.to([revealMenu,revealMenubg],{
-        duration:.8,
+        duration:0.8,
         height:0,
         ease:'power3.inOut',
         stagger:{
@@ -60,7 +61,7 @@ const Hamburger = ({ state }) => {
 
        staggerReveal(revealMenubg,revealMenu);
        fadInUP(info)
-       staggerText(line1,line2,line3)
+       staggerText(line1,line2,line3,line4)
 
 
 
@@ -81,8 +82,8 @@ const Hamburger = ({ state }) => {
     })
 
   }
-  const staggerText=(node1,node2,node3)=>{
-    gsap.from([node1,node2,node3],{
+  const staggerText=(node1,node2,node3,node4)=>{
+    gsap.from([node1,node2,node3,node4],{
       duration:.8,
       y:100,
       delay:.1,
@@ -170,32 +171,38 @@ const Hamburger = ({ state }) => {
                       Home
                     </Link>
                   </li>
-                  <li onMouseEnter={(e)=>handleHover(e)} onMouseOut={e=>handleHoverExit(e)}>
-                    <Link ref={(el) => (line2 = el)} to="/product">
-                      Product
+                  <li onMouseEnter={(e)=>handleHover(e)} onMouseOut={e=>handleHoverExit(e)} >
+                    <Link ref={(el) => (line2 = el)} to="/">
+                      Best Selling
                     </Link>
                   </li>
                   <li onMouseEnter={(e)=>handleHover(e)} onMouseOut={e=>handleHoverExit(e)}>
-                    <Link ref={(el) => (line3 = el)} to="/Login">
+                    <Link ref={(el) => (line3 = el)} to="/products">
+                      Products
+                    </Link>
+                  </li>
+                  <li onMouseEnter={(e)=>handleHover(e)} onMouseOut={e=>handleHoverExit(e)}>
+                    <Link ref={(el) => (line4 = el)} to="/login">
                       Login
                     </Link>
                   </li>
                 </ul>
               </nav>
               <div ref={(el) => (info = el)} className="info">
-                <h3>Our Promise</h3>
+                {/* <h3>Our Promise</h3>
                 <p>
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                   Repellendus impedit, quasi voluptas corporis nulla similique
                   ipsam aspernatur eveniet tempore earum
-                </p>
-              </div>
-              <div className="locations">
-                Locations:
+                </p> */}
+                  <div className="locations">
+                Events:
              {cities.map(el=>(
               <span key={el.name} onMouseEnter={()=>handleCity(el.image)} onMouseOut={handleCityReturn} >{el.name}</span>
              ))}
               </div>
+              </div>
+            
             </div>
           </div>
         </div>

@@ -83,11 +83,11 @@ position: relative;
 }
 .hamburger-menu .menu-layer .wrapper .menu-links nav ul li{
   list-style: none;
-  font-size: 6rem;
+  font-size: 4.5rem;
   font-family: var(--font-family-poppins);
   font-weight: 700;
   cursor: pointer;
-  height: 135px;
+  height: 100px;
   overflow: hidden;
   position: relative;
   width: 700px;
@@ -120,9 +120,9 @@ margin: 0px auto;
 }
 .hamburger-menu .menu-layer .wrapper .menu-links .locations{
     position: absolute;
-    bottom: -80px;
+    /* bottom: -80px; */
     color: whitesmoke;
-    margin-top: 16px;
+    /* margin-top: 16px; */
     font-size: 1.1rem;
     font-weight: 600;
     font-family: var(--font-family-poppins);

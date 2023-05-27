@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Navbar.css'
 import Hamburger from './Hamburger';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -56,7 +56,8 @@ useEffect(()=>{
   return (
  <>
     <nav>
-        <img alt='logo' width="110" src="logo.png"/>
+      <Link to="/"> <img alt='logo' width="110" src="logo.png"/></Link>
+       
 
         <button disabled={disabeld} onClick={handleMenu}>
             {state.menuName}
