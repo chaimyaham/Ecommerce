@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import Store from "./redux/store";
 import { loadUser } from "./redux/actions/user";
 import Home from "./pages/Home";
+import Products from "./pages/Products";
 
 function App() {
   useEffect(() => {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/product" element={<Products />} />
         <Route
           path="/activation/:activationToken"
           element={<ActivationPage />}

@@ -1,13 +1,14 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
 
 
 const Home = () => {
   return (
     <div>
-        Navbar
+       <Navbar/>
         Banner
         Footer
-        <img width="150" src="logo.png"/>
+        
     </div>
   )
 }
