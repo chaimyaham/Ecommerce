@@ -3,7 +3,7 @@ import '../styles/Navbar.css'
 import Hamburger from './Hamburger';
 import { Link, useLocation } from 'react-router-dom';
 
-
+import logo from '../images/logo.png';
 const Navbar = () => {
   const [state, setState] = useState({
     initial:false,
@@ -56,7 +56,7 @@ useEffect(()=>{
   return (
  <>
     <nav>
-      <Link to="/"> <img alt='logo' width="110" src="logo.png"/></Link>
+      <Link to="/"> <img alt='logo' width="110" src={logo}/></Link>
        
 
         <button disabled={disabeld} onClick={handleMenu}>

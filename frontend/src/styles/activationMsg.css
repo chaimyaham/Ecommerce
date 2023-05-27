@@ -1,18 +1,21 @@
 .activationContainer{
+    position: absolute;
+    overflow-x: hidden;
     display: flex;
+    top: 0;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
     font-family: var(--font-family-abril);
-    background-image: url('../../public/bg3.png');
+    background-image: url('../images/bg3.png');
     background-size: cover;
     background-repeat: no-repeat;
-    
+    z-index: 1000;
 
 }
 .activationContainer p{
-
+    overflow: hidden;
     font-size: 1.5rem;
     border-radius: 16px;
     box-shadow: 0 4px 30px #4747470b;

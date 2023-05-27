@@ -5,6 +5,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+.App{
+  max-width: 1900px;
+  margin: auto;
+}
 :root {
   --font-family-abril: "Abril Fatface", cursive;
   --font-family-marcellus: "Marcellus", serif;
@@ -12,20 +16,28 @@
 }
 
 .loginPageMain {
+  /* position: absolute; */
+  top: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../public/bg2.png");
+  background-image: url("./images/bg2.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  z-index: 1000;
 }
 .signupPageMain {
+  /* position: absolute; */
+  top: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../public/bg3.png");
+  background-image: url("./images/bg3.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  z-index: 1000;
 }

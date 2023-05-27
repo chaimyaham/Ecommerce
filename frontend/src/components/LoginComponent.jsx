@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { AiFillLeftCircle, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../server";
@@ -27,6 +27,9 @@ const LoginComponent = () => {
 
   return (
     <div className="loginContainer">
+       {/* <Link to="/">
+      <AiFillLeftCircle color="white" size="30px" cursor="pointer"/>
+      </Link> */}
       <h2>Login </h2>
       <form onSubmit={handleSubmit}>
         <div className="group">

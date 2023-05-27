@@ -3,8 +3,7 @@ nav{
     position: relative;
     align-items: center;
     justify-content: space-between;
- 
-    padding: 20px 30px;
+    padding: 5px 40px;
     z-index: 10;
 }
 nav button{

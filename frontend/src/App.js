@@ -12,6 +12,7 @@ import Store from "./redux/store";
 import { loadUser } from "./redux/actions/user";
 import Home from './pages/Home'
 import Products from "./pages/Products";
+import Navbar from "./components/Navbar";
 
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="App">
+    <Navbar/>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home/>} />
@@ -50,7 +52,7 @@ function App() {
         pauseOnHover
         theme="dark"
       />
-    </>
+    </div>
   );
 }
 
