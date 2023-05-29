@@ -10,7 +10,7 @@ const ProductCard = ({data}) => {
     <div className='ProductCard'>
          <div></div>
          <Link to={`/product/${product_name}`}>
-            <img src={data.image_Url[0].url} alt="" srcset="" />
+            <img src={data.image_Url[0].url} alt=""  />
          </Link>
 
     </div>

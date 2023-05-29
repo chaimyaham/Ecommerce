@@ -16,7 +16,8 @@ const LoginComponent = () => {
     e.preventDefault();
     await axios.post(`${server}/user/login-user`,{email,password},{withCredentials:true}).then((res)=>{
       toast.success('Login Successfully');
-      navigate("/")
+      navigate("/");
+      window.location.reload(true)
       
     }).catch((err)=>{
       toast.error(err.response.data.message)
