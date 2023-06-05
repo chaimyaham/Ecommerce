@@ -34,6 +34,7 @@
         border: none;
         border-radius: 10px;
         outline: none;
+        color: black;
 }
 .check{
         width: 20px;

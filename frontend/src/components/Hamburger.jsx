@@ -1,9 +1,13 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import gsap from "gsap";
 import kech from '../images/collection-lamps-store-with-dark-background.jpg';
 import essawira from '../images/beautiful-girl-traditional-carpet-shop-goreme-city-cappadocia-turkey.jpg';
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { server } from "../server";
+import { toast } from "react-toastify";
 
 const cities=[
   {
@@ -16,6 +20,22 @@ const cities=[
 
 
 const Hamburger = ({ state }) => {
+
+  const { isAuthenticated} = useSelector((state) => state.user);
+  const navigate=useNavigate();
+  
+  const logoutHandler = () => {
+    axios
+      .get(`${server}/user/logout`, { withCredentials: true })
+      .then((res) => {
+        toast.success(res.data.message);
+        window.location.reload(true);
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
+      });
+  };
   // variable for animate dom nodes
 
   let menu = useRef(null);
@@ -182,9 +202,12 @@ const Hamburger = ({ state }) => {
                     </Link>
                   </li>
                   <li onMouseEnter={(e)=>handleHover(e)} onMouseOut={e=>handleHoverExit(e)}>
-                    <Link ref={(el) => (line4 = el)} to="/login">
-                      Login
-                    </Link>
+                    
+                   {isAuthenticated?( <Link onClick={logoutHandler} ref={(el) => (line4 = el)}>
+                      Logout
+                    </Link>):( <Link ref={(el) => (line4 = el)} to="/login">
+                      LogIn
+                    </Link>)}
                   </li>
                 </ul>
               </nav>

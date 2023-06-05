@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes} from "react-router-dom";
 import "./App.css";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -13,9 +13,11 @@ import { loadUser } from "./redux/actions/user";
 import Home from './pages/Home'
 import Products from "./pages/Products";
 import Navbar from "./components/Navbar";
+import { useSelector } from "react-redux";
 
 
 function App() {
+  const { isAuthenticated} = useSelector((state) => state.user);
   useEffect(() => {
     // axios.get(`${server}/user/getuser`,{withCredentials:true}).then((res)=>{
     //  toast.success(res.data.message);
@@ -29,11 +31,12 @@ function App() {
   return (
     <div className="App">
     <Navbar/>
+
       <Routes>
-        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home/>} />
         <Route path="/products" element={<Products/>} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/login" element={!isAuthenticated?(<Login/>):(<Navigate to="/"/>)} />
+        <Route path="/sign-up" element={!isAuthenticated?(<SignUp/>):(<Navigate to="/"/>)} />
         
         <Route
           path="/activation/:activationToken"

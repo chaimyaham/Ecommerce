@@ -1,46 +1,41 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import Iphone from "../assets/images/iphone-14.jpg";
-import holdingIphone from "../assets/images/iphone-hand.png"
-import SoundSection from './SoundSection';
-import DisplaySection from './DisplaySection';
-import WebgiViewer from './WebgiViewer';
+import { Link } from 'react-router-dom';
+import styles from '../styles/styles';
+
+
+
 const Banner = () => {
-  const handleLearnMore=()=>{
-    const element = document.querySelector(".sound-section");
-    window.scrollTo({
-      top:element?.getBoundingClientRect().top,
-      left:0,
-      behavior:'smooth'
-    })
-  }
-  return (
- <div>
-     <div className='jumbotron-section wrapper'>
-      <h2 className='title'>Best Deal </h2>
-      <img className='logo' src={Iphone} alt="iPhone 14 Pro " />
-      <p className='text'>Big and Bigger.</p>
-      <span className='description'>
-        From $41.62/mo for 24 mo. or $999 before trade-In
 
-      </span>
-      <ul className='links'>
-        <li>
-          <button className='button'><Link to="">Buy</Link>  </button>
-        </li>
-        <li>
-          <Link className='link' to="" onClick={handleLearnMore}>Learn more </Link>
-        </li>
-      </ul>
-      <img className='iphone-img' src={holdingIphone} alt="hand holding iphone"  />
-    
-    </div>
-    <SoundSection/>
-    <DisplaySection/>
-    <WebgiViewer/>
- </div>
+  
+    return (
+      <div
+        className={`Banner relative min-h-[70vh] 800px:min-h-[80vh] w-full bg-no-repeat ${styles.noramlFlex}`}
+      
+      >
+        <div className={`${styles.section} w-[90%] 800px:w-[60%]`}>
+          <h1
+            className={`text-[35px] leading-[1.2] 800px:text-[60px] text-[#f4f0f0] font-[600] capitalize`}
+          >
+            Become a seller <br /> And gain 
+          </h1>
+          <p className="pt-5 text-[16px] font-[Poppins] font-[400] text-[#f9f7f7ba]">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae,
+            assumenda? Quisquam itaque <br /> exercitationem labore vel, dolore
+            quidem asperiores, laudantium temporibus soluta optio consequatur{" "}
+            <br /> aliquam deserunt officia. Dolorum saepe nulla provident.
+          </p>
+          <Link to="/products" className="inline-block">
+              <div className={`${styles.button} mt-5`}>
+                   <span className="text-[#131313] font-[Poppins] text-[18px]">
+                      Discover All products
+                   </span>
+              </div>
+          </Link>
+        </div>
+      </div>
+    );
 
-  )
+  
 }
 
 export default Banner

@@ -13,7 +13,7 @@ const Home = () => {
     <div>
      
       {/* searchBox */}
-      <Searchbar/>
+      {/* <Searchbar/> */}
         <Banner/>
         <Categories/>
         <BestDeals/>
