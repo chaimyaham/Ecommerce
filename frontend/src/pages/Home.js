@@ -5,6 +5,8 @@ import Banner from "../components/Banner";
 import Categories from "../components/Categories";
 import BestDeals from "../components/BestDeals";
 
+import Footer from "../components/Footer";
+
 
 const Home = () => {
  
@@ -17,7 +19,7 @@ const Home = () => {
         <Banner/>
         <Categories/>
         <BestDeals/>
-       Footer
+        <Footer/>
       <h1>Home Page</h1>
     </div></>
   );
