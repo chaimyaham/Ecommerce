@@ -6,6 +6,7 @@ import Categories from "../components/Categories";
 import BestDeals from "../components/BestDeals";
 
 import Footer from "../components/Footer";
+import UserInfo from "../components/UserInfo";
 
 
 const Home = () => {
@@ -16,9 +17,11 @@ const Home = () => {
      
       {/* searchBox */}
       {/* <Searchbar/> */}
+      
+        <UserInfo/>
         <Banner/>
-        <Categories/>
-        <BestDeals/>
+        {/* <Categories/>
+        <BestDeals/> */}
         <Footer/>
       <h1>Home Page</h1>
     </div></>
