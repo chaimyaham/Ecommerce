@@ -25,7 +25,7 @@ const UserInfo = () => {
   return (
     <div>
         <hr />
- <div className="flex justify-end gap-3 mb-2 mt-2">
+ <div className="flex px-3 justify-end gap-3 mb-2 mt-2">
             <div className={`${styles.noramlFlex}`}>
               <div
                 className="relative cursor-pointer mr-[15px]  hover:scale-95 duration-300"

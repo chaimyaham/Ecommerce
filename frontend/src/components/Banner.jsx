@@ -14,9 +14,9 @@ const Banner = () => {
       >
         <div className={`${styles.section} w-[90%] 800px:w-[60%]`}>
           <h1
-            className={`text-[35px] leading-[1.2] 800px:text-[60px] text-[#f4f0f0] font-[600] capitalize`}
+            className={`text-[25px] leading-[1.2] 800px:text-[60px] text-[#f4f0f0] font-[600] capitalize`}
           >
-            Become a seller <br /> And gain 
+          "Discover the Perfect Deals  <br /> at saleSquare!"
           </h1>
           <p className="pt-5 text-[16px] font-[Poppins] font-[400] text-[#ffffff]">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae,

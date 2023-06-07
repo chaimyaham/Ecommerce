@@ -20,10 +20,10 @@ const Home = () => {
       
         <UserInfo/>
         <Banner/>
-        {/* <Categories/>
-        <BestDeals/> */}
+        {/* <Categories/> */}
+        <BestDeals/>
         <Footer/>
-      <h1>Home Page</h1>
+    
     </div></>
   );
 };
