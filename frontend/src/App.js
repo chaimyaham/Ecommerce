@@ -14,6 +14,8 @@ import Home from './pages/Home'
 import Products from "./pages/Products";
 import Navbar from "./components/Navbar";
 import { useSelector } from "react-redux";
+import ProfilePage from "./pages/ProfilePage";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 
 function App() {
@@ -42,7 +44,16 @@ function App() {
           path="/activation/:activationToken"
           element={<ActivationPage />}
         />
+         <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
+     
       <ToastContainer
         position="top-center"
         autoClose={5000}

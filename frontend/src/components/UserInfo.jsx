@@ -5,6 +5,8 @@ import styles from '../styles/styles';
 import { backend_url } from '../server';
 import { RxAvatar } from "react-icons/rx";
 import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
+import Cart from './Cart';
+import Wishlist from './Wishlist';
 
 
 
@@ -72,6 +74,13 @@ const UserInfo = () => {
                 )}
               </div>
             </div>
+               {/* cart popup */}
+               {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
+
+{/* wishlist popup */}
+{openWishlist ? (
+  <Wishlist setOpenWishlist={setOpenWishlist} />
+) : null}
 
       
           </div>
