@@ -16,6 +16,8 @@ import Navbar from "./components/Navbar";
 import { useSelector } from "react-redux";
 import ProfilePage from "./pages/ProfilePage";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import ShopCreatePage from "./components/shop/ShopCreatePage";
+import ShopLoginPage from "./components/shop/ShopLoginPage";
 
 
 function App() {
@@ -52,6 +54,9 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+      <Route path="/shop-create" element={<ShopCreatePage />} />
+        <Route path="/shop-login" element={<ShopLoginPage />} />
       </Routes>
      
       <ToastContainer

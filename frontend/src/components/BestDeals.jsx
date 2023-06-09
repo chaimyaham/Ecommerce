@@ -16,9 +16,10 @@ const BestDeals = () => {
   
 
   return (
-    <div className='bestDealSection'>
-        <div>
-            <h1 className='m-4 text-4xl font-semibold first-letter:text-[#1682AE] first-letter:text-6xl  text-center mt-4 underline'>Best Selling Products</h1>
+    <div className='bestDealSection  mt-10'>
+        <div className='text-center'>
+        <h5 className='text-gray-500 '> our products</h5>
+        <h1 className='text-4xl w-96 mx-auto leading-normal font-bold mb-12 whitespace-pre'>Best Selling Products</h1>
         </div>
         <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-5 xl:gap-[30px] mb-12 border-0">
            {

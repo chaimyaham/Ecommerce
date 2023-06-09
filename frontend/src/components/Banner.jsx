@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import styles from '../styles/styles';
+import { useSelector } from 'react-redux';
 
 
 
 const Banner = () => {
+  const { isSeller } = useSelector((state) => state.seller);
 
   
     return (
@@ -24,10 +26,10 @@ const Banner = () => {
             quidem asperiores, laudantium temporibus soluta optio consequatur{" "}
             <br /> aliquam deserunt officia. Dolorum saepe nulla provident.
           </p>
-          <Link to="/shop-create" className="inline-block">
+          <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}className="inline-block">
               <div className={`${styles.button} mt-5  hover:bg-[#1682AE] hover:text-white duration-300 cursor-pointer`}>
                    <span className="text-[#131313] font-[Poppins] text-[18px]">
-                      Become a seller 
+                   {isSeller ? "Go Dashboard" : "Become Seller"}{" "}
                    </span>
               </div>
           </Link>
@@ -38,6 +40,7 @@ const Banner = () => {
                    </span>
               </div>
           </Link>
+        
         </div>
       </div>
     );
