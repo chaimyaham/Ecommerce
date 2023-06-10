@@ -23,6 +23,8 @@ import ShopLoginPage from "./pages/ShopLoginPage";
 import ShopDashboardPage from "./pages/ShopDashboardPage";
 import SellerProtectedRoute from "./routes/SellerProtectedRoute";
 import ShopeHomePage from "./pages/ShopeHomePage";
+import { getAllProducts } from "./redux/actions/product";
+import AddnewProduct from "./components/shop/AddnewProduct";
 
 
 function App() {
@@ -36,6 +38,7 @@ function App() {
 
     Store.dispatch(loadUser());
     Store.dispatch(loadSeller());
+    Store.dispatch(getAllProducts());
   }, []);
 
   return (
@@ -78,11 +81,20 @@ function App() {
           }
         />
 
-<Route
+      <Route
           path="/shop/:id"
           element={
             <SellerProtectedRoute>
               <ShopeHomePage />
+            </SellerProtectedRoute>
+          }
+        />
+
+      <Route
+          path="/dashboard-create-product"
+          element={
+            <SellerProtectedRoute>
+              <AddnewProduct />
             </SellerProtectedRoute>
           }
         />
