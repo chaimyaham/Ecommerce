@@ -9,15 +9,20 @@ import { useEffect } from "react";
 // import { server } from "./server";
 // import axios from "axios";
 import Store from "./redux/store";
-import { loadUser } from "./redux/actions/user";
+import { loadSeller, loadUser } from "./redux/actions/user";
 import Home from './pages/Home'
 import Products from "./pages/Products";
 import Navbar from "./components/Navbar";
 import { useSelector } from "react-redux";
 import ProfilePage from "./pages/ProfilePage";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import ShopCreatePage from "./components/shop/ShopCreatePage";
-import ShopLoginPage from "./components/shop/ShopLoginPage";
+
+import ShopActivation from "./components/shop/ShopActivation";
+import ShopSignUpPage from "./pages/ShopSignUpPage";
+import ShopLoginPage from "./pages/ShopLoginPage";
+import ShopDashboardPage from "./pages/ShopDashboardPage";
+import SellerProtectedRoute from "./routes/SellerProtectedRoute";
+import ShopeHomePage from "./pages/ShopeHomePage";
 
 
 function App() {
@@ -30,6 +35,7 @@ function App() {
     // });
 
     Store.dispatch(loadUser());
+    Store.dispatch(loadSeller());
   }, []);
 
   return (
@@ -55,8 +61,35 @@ function App() {
           }
         />
 
-      <Route path="/shop-create" element={<ShopCreatePage />} />
+      <Route path="/shop-create" element={<ShopSignUpPage />} />
         <Route path="/shop-login" element={<ShopLoginPage />} />
+        <Route
+          path="/seller/activation/:activation_token"
+          element={<ShopActivation />}
+        />
+
+
+<Route
+          path="/dashboard"
+          element={
+            <SellerProtectedRoute>
+              <ShopDashboardPage />
+            </SellerProtectedRoute>
+          }
+        />
+
+<Route
+          path="/shop/:id"
+          element={
+            <SellerProtectedRoute>
+              <ShopeHomePage />
+            </SellerProtectedRoute>
+          }
+        />
+
+
+
+
       </Routes>
      
       <ToastContainer

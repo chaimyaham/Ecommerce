@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { AiFillLeftCircle, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import UserInfo from '../UserInfo.jsx'
 import { Link,useNavigate } from "react-router-dom";
 import { RxAvatar } from "react-icons/rx";
 import axios from "axios"; 
-import {server}from "../../server"
+import {server}from "../../server.js"
 import { toast } from "react-toastify";
+import bgShop from '../../images/bg2.png'
 import '../../styles/signUp.css';
 
-const ShopCreatePage = () => {
+const ShopCreatePageComponent = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [phoneNumber,setPhoneNumber] = useState();
@@ -18,43 +20,45 @@ const ShopCreatePage = () => {
     const [avatar, setAvatar] = useState(null);
     const navigate=useNavigate()
   
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
+      const config = { headers: { "Content-Type": "multipart/form-data" } };
   
-      const config={
-        headers:{"Content-Type":"multipart/form-data"}
-      };
-      const newForm=new FormData();
-      newForm.append("file",avatar);
-      newForm.append("name",name);
-      newForm.append("email",email);
-      newForm.append("password",password);
-      axios.post(`${server}/user/create-user`,newForm,config).then((res)=>{
-        
-        toast.success(res.data.message)
-        setEmail('');
-        setName('');
-        setPassword('');
-        setAvatar(null)
+      const newForm = new FormData();
   
-  
-        if(res.data.success === true){
-          navigate('/login')
-        }
-      }).catch((err)=>{
-        toast.error(err.response.data.message)
-       
-      })
-  
+      newForm.append("file", avatar);
+      newForm.append("name", name);
+      newForm.append("email", email);
+      newForm.append("password", password);
+      newForm.append("zipCode", zipCode);
+      newForm.append("address", address);
+      newForm.append("phoneNumber", phoneNumber);
+      axios
+        .post(`${server}/shop/create-shop`, newForm, config)
+        .then((res) => {
+          toast.success(res.data.message);
+          setName("");
+          setEmail("");
+          setPassword("");
+          setAvatar();
+          setZipCode();
+          setAddress("");
+          setPhoneNumber();
+        })
+        .catch((error) => {
+          toast.error(error.response.data.message);
+        });
     };
-    const handleFileInput = (e) => {
+  
+    const handleFileInputChange = (e) => {
       const file = e.target.files[0];
       setAvatar(file);
-      console.log("handleFileInput", file);
     };
   return (
-    <div className="">
-         <div className="signUpContainer m-auto ">
+    <div className="bgShop py-10" >
+      <UserInfo/>
+      
+         <div className="signUpContainer m-auto " style={{backgroundImage:`url(${bgShop})`,backgroundSize:"cover", backgroundRepeat:"no-repeat"}}>
       {/* <Link to="/login">
       <AiFillLeftCircle color="white" size="30px" cursor="pointer"/>
       </Link> */}
@@ -87,12 +91,34 @@ const ShopCreatePage = () => {
         <div className="group">
           <label htmlFor="address">Adress :</label>
           <input
-            type="text"
+            type="address"
             name="address"
             autoComplete="adress"
             required
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+          />
+        </div>
+        <div className="group">
+          <label htmlFor="phone Number">Phone Number :</label>
+          <input
+            type="number"
+            name="phoneNumber"
+            autoComplete="phone"
+            required
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+          />
+        </div>
+        <div className="group">
+          <label htmlFor="address">Zip Code :</label>
+          <input
+            type="number"
+            name="zipCode"
+            autoComplete="zip"
+            required
+            value={zipCode}
+            onChange={(e) => setZipCode(e.target.value)}
           />
         </div>
         <div className="group">
@@ -123,20 +149,20 @@ const ShopCreatePage = () => {
           </span>
           <label htmlFor="file-input">
             <span>UploadFile</span>
-            <input type="file" name="avatar" id="file-input" accept=".jpg, .jpeg, .png" onChange={(e)=>handleFileInput(e)} />
+            <input type="file" name="avatar" id="file-input" accept=".jpg, .jpeg, .png" onChange={(e)=>handleFileInputChange(e)} />
           </label>
           </div>
         
         </div>
         <div className="group">
           <button type="submit">
-            sign up
+            Create
           </button>
         </div>
       </form>
       <div className="more">
         <h4>
-          have already an account? <Link className="link" to="/login">Login.</Link>
+          have already a shop? <Link className="link" to="/shop-login">Login.</Link>
         </h4>
       </div>
     </div>
@@ -145,4 +171,4 @@ const ShopCreatePage = () => {
   )
 }
 
-export default ShopCreatePage
+export default ShopCreatePageComponent
