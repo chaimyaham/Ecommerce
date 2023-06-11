@@ -62,52 +62,59 @@ const ProductCard = ({ data,isEvent }) => {
   };
 
   return (
-    <>
-      <div className="w-full h-[370px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer">
-        <div className="flex justify-end"></div>
-        <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
-          <img
-            src={`${backend_url}${data.images && data.images[0]}`}
-            alt=""
-            className="w-full h-[170px] object-contain"
-          />
-        </Link>
-        <Link to={`/shop/preview/${data?.shop._id}`}>
-          <h5 className={`${styles.shop_name}`}>{data.shop.name}</h5>
-        </Link>
-        <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
-          <h4 className="pb-3 font-[500]">
-            {data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}
-          </h4>
-
-          <div className="flex">
-          {/* <Ratings rating={data?.ratings} /> */}
+    
+      <div className="   bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md cursor-pointer hover:bg-gray-300 duration-300 ">
+        <img className="w-full rounded-md h-[200px] object-cover  " src={`${backend_url}${data.images && data.images[0]}`} alt=""  />
+        <div className="p-5 flex flex-col gap-3 ">
+          <div className="flex items-center gap-2 ">
+            <span className="badge"> stock ready</span>
+            <span className="badge"> official store </span>
           </div>
 
-          <div className="py-2 flex items-center justify-between">
-            <div className="flex">
-              <h5 className={`${styles.productDiscountPrice}`}>
-                {data.originalPrice === 0
+
+          {/* product title */}
+          <h2 className="product-title " title="best headphone ever"> {data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}</h2>
+
+          {/* product price */}
+          <div>
+            <span className="text-xl font-bold ">
+            {data.originalPrice === 0
                   ? data.originalPrice
-                  : data.discountPrice}
-                $
-              </h5>
-              <h4 className={`${styles.price}`}>
-                {data.originalPrice ? data.originalPrice + " $" : null}
-              </h4>
-            </div>
-            <span className="font-[400] text-[17px] text-[#68d284]">
-              {data?.sold_out} sold
+                  : data.discountPrice}$
             </span>
-          </div>
-        </Link>
+            <div className="flex items-center gap-2 mt-1 ">
+              <span className="text-sm line-through opacity-50"> 
+              {data.originalPrice ? data.originalPrice + " $" : null}
+              </span>
+              <span className="discount-percent">
+              {data?.sold_out} sold
+              </span>
 
-        {/* side options */}
-        <div>
-          {click ? (
+            </div>
+          </div>
+
+          {/* product rating  */}
+          <span className="flex items-center mt-1 " >
+             <AiFillStar fill="#DBB421"/>
+             <AiFillStar fill="#DBB421"/>
+             <AiFillStar fill="#DBB421"/>
+             <AiFillStar fill="#DBB421"/>
+             <AiOutlineStar fill="#DBB421"/>
+
+             <span className="text-xs ml-2 text-gray-500 ">
+             {data?.sold_out} reviews
+             </span>
+          </span>
+
+          <div className="mt-5 flex gap-2 ">
+            <button className="buttom-primary" onClick={() => addToCartHandler(data._id)}>
+              Add to cart
+            </button>
+            <button className="flex-grow flex justify-center items-center bg-gray-300/60 hove:bg-gray-300/80 transition rounded-md">
+            {click ? (
             <AiFillHeart
               size={22}
-              className="cursor-pointer absolute right-2 top-5"
+          
               onClick={() => removeFromWishlistHandler(data)}
               color={click ? "red" : "#333"}
               title="Remove from wishlist"
@@ -115,30 +122,22 @@ const ProductCard = ({ data,isEvent }) => {
           ) : (
             <AiOutlineHeart
               size={22}
-              className="cursor-pointer absolute right-2 top-5"
+          
               onClick={() => addToWishlistHandler(data)}
               color={click ? "red" : "#333"}
               title="Add to wishlist"
             />
           )}
-          <AiOutlineEye
-            size={22}
-            className="cursor-pointer absolute right-2 top-14"
-            onClick={() => setOpen(!open)}
-            color="#333"
-            title="Quick view"
-          />
-          <AiOutlineShoppingCart
-            size={25}
-            className="cursor-pointer absolute right-2 top-24"
-            onClick={() => addToCartHandler(data._id)}
-            color="#444"
-            title="Add to cart"
-          />
+            </button>
+            <button className="flex-grow flex justify-center items-center bg-gray-300/60 hove:bg-gray-300/80 transition rounded-md">
+              <AiOutlineEye size={25} onClick={() => setOpen(!open)}/> 
+            </button>
+
+          </div>
           {open ? <ProductDetailsCard setOpen={setOpen} data={data} /> : null}
         </div>
       </div>
-    </>
+    
   );
 };
 

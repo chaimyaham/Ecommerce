@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { AiOutlineCamera } from 'react-icons/ai'
 import { backend_url, server } from '../server'
 import { useDispatch, useSelector } from 'react-redux';
-import TrackOrder from './TrackOrder';
+
 import styles from '../styles/styles';
 import { toast } from 'react-toastify';
 import axios from 'axios';
@@ -12,6 +12,10 @@ import {
   updatUserAddress,
   updateUserInformation,
 } from "../redux/actions/user";
+import { getAllOrdersOfUser } from "../redux/actions/order";
+import { Link } from "react-router-dom";
+import { MdTrackChanges } from 'react-icons/md';
+
 
 const ProfileContent = ({active}) => {
     const { user, error, successMessage } = useSelector((state) => state.user);
@@ -145,13 +149,20 @@ const ProfileContent = ({active}) => {
           </div>
         </>
       )}
-         {active === 5 && (
+      {active === 5 && (
         <div>
-          <TrackOrder />
+          hello
+        </div>
+      )}
+         {active === 3 && (
+        <div>
+          hi 
         </div>
       )}
     </div>
   )
+
+  
 }
 
 export default ProfileContent

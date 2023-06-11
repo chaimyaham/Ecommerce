@@ -5,7 +5,7 @@ import SignUp from "./pages/SignUp";
 import ActivationPage from "./pages/ActivationPage";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // import { server } from "./server";
 // import axios from "axios";
 import Store from "./redux/store";
@@ -25,27 +25,53 @@ import SellerProtectedRoute from "./routes/SellerProtectedRoute";
 import ShopeHomePage from "./pages/ShopeHomePage";
 import { getAllProducts } from "./redux/actions/product";
 import AddnewProduct from "./components/shop/AddnewProduct";
+import CheckoutPage from "./pages/CheckoutPage";
+import axios from "axios";
+import { server } from "./server";
+import PaymentPage from "./pages/PaymentPage";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import OrderSuccessPage from "./components/checkout/OrderSuccessPage";
 
 
 function App() {
   const { isAuthenticated} = useSelector((state) => state.user);
-  useEffect(() => {
-    // axios.get(`${server}/user/getuser`,{withCredentials:true}).then((res)=>{
-    //  toast.success(res.data.message);
-    // }).catch((err)=>{
-    //   toast.error(err.response.data.message)
-    // });
+  const [stripeApikey, setStripeApiKey] = useState("");
 
+  async function getStripeApikey() {
+    const { data } = await axios.get(`${server}/payment/stripeapikey`);
+    setStripeApiKey(data.stripeApikey);
+    console.log(1231)
+    console.log(data.stripeApikey)
+  }
+  useEffect(() => {
     Store.dispatch(loadUser());
     Store.dispatch(loadSeller());
     Store.dispatch(getAllProducts());
+    
+    getStripeApikey();
   }, []);
 
   return (
     <div className="App">
     <Navbar/>
+    {stripeApikey && (
+        <Elements stripe={loadStripe(stripeApikey)}>
+          <Routes>
+            <Route
+              path="/payment"
+              element={
+                <ProtectedRoute>
+                  <PaymentPage />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </Elements>
+      )} 
 
       <Routes>
+        
         <Route path="/" element={<Home/>} />
         <Route path="/products" element={<Products/>} />
         <Route path="/login" element={!isAuthenticated?(<Login/>):(<Navigate to="/"/>)} />
@@ -98,7 +124,15 @@ function App() {
             </SellerProtectedRoute>
           }
         />
-
+          <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute>
+              <CheckoutPage />
+            </ProtectedRoute>
+          }
+        />
+            <Route path="/order/success" element={<OrderSuccessPage />} />
 
 
 

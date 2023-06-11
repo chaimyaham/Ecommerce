@@ -1,14 +1,60 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
+
+import styles from "../styles/styles";
+import Loader from "../components/Loader";
+import UserInfo from "../components/UserInfo";
+import Footer from "../components/Footer";
+import ProductCard from "../components/ProductCard";
 
 const Products = () => {
-  return (
-    <>
-     {/* <Navbar/> */}
-     <h1>Products Page</h1>
-    </>
-   
-  )
-}
+  const [searchParams] = useSearchParams();
+  const categoryData = searchParams.get("category");
+  const {allProducts,isLoading} = useSelector((state) => state.products);
+  const [data, setData] = useState([]);
 
-export default Products
+  useEffect(() => {
+    if (categoryData === null) {
+      const d = allProducts;
+      setData(d);
+    } else {
+      const d =
+      allProducts && allProducts.filter((i) => i.category === categoryData);
+      setData(d);
+    }
+    //    window.scrollTo(0,0);
+  }, [allProducts]);
+
+  return (
+  <>
+  {
+    isLoading ? (
+      <Loader />
+    ) : (
+      <div>
+      <UserInfo />
+      <br />
+      <br />
+      <div className={`${styles.section}`}>
+        <div className="flex flex-grow flex-wrap justify-center gap-5">
+          {data && data.map((i, index) => <ProductCard data={i} key={index} />)}
+        </div>
+        {data && data.length === 0 ? (
+          <h1 className="text-center w-full pb-[100px] text-[20px]">
+            No products Found!
+          </h1>
+        ) : null}
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <Footer />
+    </div>
+    )
+  }
+  </>
+  );
+};
+
+export default Products;

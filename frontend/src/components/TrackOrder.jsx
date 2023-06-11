@@ -15,9 +15,9 @@ const TrackOrder = () => {
   }, [dispatch]);
 
   const data = orders && orders.find((item) => item._id === id);
-
+ console.log(data)
   return (
-    <div className="w-full h-[80vh] flex justify-center items-center">
+    <div className=" flex justify-center items-center">
       {" "}
       <>
         {data && data?.status === "Processing" ? (
@@ -46,6 +46,8 @@ const TrackOrder = () => {
           <h1 className="text-[20px]">Your Refund is success!</h1>
         ) : null}
       </>
+      hi
+      
     </div>
   );
 };

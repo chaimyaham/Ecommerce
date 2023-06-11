@@ -9,6 +9,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+@layer components{
+ 
+  .badge {
+    @apply
+      px-3 py-1 rounded-full text-xs bg-gray-100 
+  }
+  .product-title{
+    @apply
+    font-semibold text-2xl overflow-ellipsis  whitespace-nowrap capitalize
+  }
+  .discount-percent{
+    @apply bg-[#149BC2] px-1.5 py-0.5 rounded-md text-xs text-white 
+  }
+  .buttom-primary {
+    @apply  
+    bg-yellow-500/80 hover:bg-yellow-500/90 px-6 py-2 rounded-md text-white font-medium  tracking-wider transition
+  }
+ 
+}
 :root {
   --font-family-abril: "Abril Fatface", cursive;
   --font-family-marcellus: "Marcellus", serif;
