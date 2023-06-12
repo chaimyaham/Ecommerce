@@ -87,7 +87,8 @@ const ProductCard = ({ data,isEvent }) => {
               {data.originalPrice ? data.originalPrice + " $" : null}
               </span>
               <span className="discount-percent">
-              {data?.sold_out} sold
+              {/* {data?.sold_out} sold */}
+              save 20%
               </span>
 
             </div>
