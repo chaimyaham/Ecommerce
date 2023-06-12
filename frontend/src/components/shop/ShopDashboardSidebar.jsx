@@ -26,11 +26,11 @@ const ShopDashboardSidebar = ({ active, setActive }) => {
   const menus = [
     { name: "My dashbord", number:1, icon: MdOutlineDashboard,link:"/dashboard" },
     { name: "Add new Product", number: 2, icon: MdAddBusiness, link:"/dashboard-create-product" },
-    { name: "All My Products", number: 3, icon: MdOutlineShopTwo },
-    { name: "list of Orders", number: 4, icon: FaClipboardList },
+    { name: "All My Products", number: 3, icon: MdOutlineShopTwo ,link:"/dashboard-products"},
+    { name: "list of Orders", number: 4, icon: FaClipboardList,link:"/dashboard-orders" },
     { name: "Withdraw Money", number: 5, icon: FaMoneyBill },
 
-    { name: "Inbox", number: 6, icon: AiFillMessage },
+    { name: "Inbox", number: 6, icon: AiFillMessage,link:"/dashboard-messages" },
     {name:'Coupons',number:7 ,icon:AiFillGift},
     {name:'Setting',number:7 ,icon: AiTwotoneSetting },
     { name: "Logout", number: 8, icon: AiOutlineLogout },

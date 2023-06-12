@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { AiOutlineCamera } from 'react-icons/ai'
+import { AiOutlineArrowRight, AiOutlineCamera } from 'react-icons/ai'
 import { backend_url, server } from '../server'
 import { useDispatch, useSelector } from 'react-redux';
+import moment from "moment"
 
 import styles from '../styles/styles';
 import { toast } from 'react-toastify';
@@ -149,14 +150,30 @@ const ProfileContent = ({active}) => {
           </div>
         </>
       )}
-      {active === 5 && (
-        <div>
-          hello
-        </div>
-      )}
+   
+      {/* orders */}
          {active === 3 && (
         <div>
+          <AllOrders/>
+        </div>
+      )}
+      {/* dahboard*/}
+         {active === 2 && (
+        <div>
+          <Dashboard/>
+        </div>
+      )}
+     
+      {/* My Inbox*/}
+         {active ===4 && (
+        <div>
           hi 
+        </div>
+      )}
+      {/* track ordeer*/}
+         {active ===5 && (
+        <div>
+          <TrackOrder/>
         </div>
       )}
     </div>
@@ -164,5 +181,163 @@ const ProfileContent = ({active}) => {
 
   
 }
+const AllOrders = () => {
+  const { user } = useSelector((state) => state.user);
+  const { orders } = useSelector((state) => state.order);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllOrdersOfUser(user._id));
+  }, []);
+
+
+
+
+
+
+  return (
+    <div className="pl-8 pt-1">
+        <div className='text-center'>
+        <h5 className='text-gray-500 '> Orders</h5>
+        <h1 className='text-4xl w-96 mx-auto leading-normal font-bold mb-12 whitespace-pre align-middle '>All My orders</h1>
+        </div>
+      <table className='w-[90%]'>
+        <thead className='bg-[#ebe1ed] border-b-2 border-gray-200 '>
+          <tr>
+            
+            <td className='p-3 text-sm font-semibold tracking-wide text-left ' >OrderId</td>
+            <td className='p-3 text-sm font-semibold tracking-wide text-left' >status</td>
+            <td className='p-3 text-sm font-semibold tracking-wide text-left' >itemsQty</td>
+            <td className='p-3 text-sm font-semibold tracking-wide text-left' >total</td>
+            <td className='p-3 text-sm font-semibold tracking-wide text-left' >Created at</td>
+          </tr>
+        </thead>
+        <tbody>
+          {orders && orders.map((item,index) => (
+        
+            <tr className='bg-gray-50' key={index}>
+                <td className="p-3 text-sm text-[#149bc2] cursor-pointer hover:text-black duration-300" >
+                    <Link to={`/user/order/${item.id}`}>
+                  {item._id} 
+
+            </Link>
+                  </td>
+                <td className={`p-3 text-sm text-gray-700 `} ><span className={`p-2 rounded-lg ${ item.status === 'Delivered'? 'bg-green-200  text-green-800': item.status === 'Processing' ? 'bg-yellow-200 text-yellow-800' : 'bg-red-200 text-red-800' }`}> {item.status}</span>  </td>
+                <td className="p-3 text-sm text-gray-700 font-semibold" >{item.cart.length} </td>
+                <td className="p-3 text-sm text-gray-700" >{item.totalPrice}$ </td>
+                <td className="p-3 text-sm text-gray-700" >{moment(item.createdAt).format('YYYY-mm-dd')}</td>
+              
+             
+            </tr>
+          
+
+            
+            
+               
+
+
+
+          ))
+           
+          }
+
+        </tbody>
+        </table>
+    </div>
+  );
+};
+const TrackOrder = () => {
+  const { user } = useSelector((state) => state.user);
+  const { orders } = useSelector((state) => state.order);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllOrdersOfUser(user._id));
+  }, []);
+
+
+
+
+
+
+  return (
+    <div className="pl-8 pt-1">
+        <div className='text-center'>
+        <h5 className='text-gray-500 '> Tracking</h5>
+        <h1 className='text-4xl w-96 mx-auto leading-normal font-bold mb-12 whitespace-pre align-middle '>Track all the Orders</h1>
+        </div>
+      <table className='w-[90%]'>
+        <thead className='bg-[#ebe1ed] border-b-2 border-gray-200 '>
+          <tr>
+            
+            <td className='p-3 text-sm font-semibold tracking-wide text-left ' >OrderId</td>
+            <td className='p-3 text-sm font-semibold tracking-wide text-left' >status</td>
+            <td className='p-3 text-sm font-semibold tracking-wide text-left' >itemsQty</td>
+            <td className='p-3 text-sm font-semibold tracking-wide text-left' >total</td>
+            <td className='p-3 text-sm font-semibold tracking-wide text-left' >Created at</td>
+          </tr>
+        </thead>
+        <tbody>
+          {orders && orders.map((item,index) => (
+        
+            <tr className='bg-gray-50' key={index}>
+                <td className="p-3 text-sm text-[#149bc2] cursor-pointer hover:text-black duration-300" >
+                    <Link to={`/user/track/order/${item.id}`}>
+                  {item._id} 
+
+            </Link>
+                  </td>
+                <td className={`p-3 text-sm text-gray-700 `} ><span className={`p-2 rounded-lg ${ item.status === 'Delivered'? 'bg-green-200  text-green-800': item.status === 'Processing' ? 'bg-yellow-200 text-yellow-800' : 'bg-red-200 text-red-800' }`}> {item.status}</span>  </td>
+                <td className="p-3 text-sm text-gray-700 font-semibold" >{item.cart.length} </td>
+                <td className="p-3 text-sm text-gray-700 font-bold" >{item.totalPrice}$ </td>
+                <td className="p-3 text-sm text-gray-700" >{moment(item.createdAt).format('YYYY-mm-dd')} </td>
+              
+             
+            </tr>
+          
+
+            
+            
+               
+
+
+
+          ))
+           
+          }
+
+        </tbody>
+        </table>
+    </div>
+  );
+};
+
+const Dashboard=()=>{
+  const { user } = useSelector((state) => state.user);
+
+  return (
+    <div className='flex px-10 flex-col justify-left gap-10'>
+          <div className='flex items-center gap-5'>
+      <img
+                src={`${backend_url}${user?.avatar}`}
+                className="w-[150px] h-[150px] rounded-full object-cover border-[3px] border-[#8C2A8E] "
+                alt=""
+              />
+              <h3 className='text-4xl font-semibold'>{user?.name}</h3>
+    </div>
+    <div>
+      <h4 ><span className='font-bold mr-5'>Email : </span> {user?.email} </h4>
+      <h4 ><span className='font-bold mr-5'>Phone :</span> +212 {user?.phoneNumber} </h4>
+      
+
+    </div>
+    </div>
+
+  )
+
+}
+
+
+
 
 export default ProfileContent

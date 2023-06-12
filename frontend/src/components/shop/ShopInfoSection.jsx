@@ -9,6 +9,7 @@ import { getAllProductsShop } from "../../redux/actions/product";
 import { FaClipboardList } from "react-icons/fa";
 import { GiBodyBalance } from "react-icons/gi";
 import { BsShop } from "react-icons/bs";
+import moment from "moment";
 
 const ShopInfoSection = () => {
   const dispatch = useDispatch();
@@ -23,69 +24,9 @@ const ShopInfoSection = () => {
 
   const availableBalance = seller?.availableBalance.toFixed(2);
 
-  const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
 
-    {
-      field: "status",
-      headerName: "Status",
-      minWidth: 130,
-      flex: 0.7,
-      cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
-      },
-    },
-    {
-      field: "itemsQty",
-      headerName: "Items Qty",
-      type: "number",
-      minWidth: 130,
-      flex: 0.7,
-    },
-
-    {
-      field: "total",
-      headerName: "Total",
-      type: "number",
-      minWidth: 130,
-      flex: 0.8,
-    },
-
-    {
-      field: " ",
-      flex: 1,
-      minWidth: 150,
-      headerName: "",
-      type: "number",
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          <>
-            <Link to={`/dashboard/order/${params.id}`}>
-              <button>
-                <AiOutlineArrowRight size={20} />
-              </button>
-            </Link>
-          </>
-        );
-      },
-    },
-  ];
-
-  const row = [];
-
-  orders && orders.forEach((item) => {
-    row.push({
-        id: item._id,
-        itemsQty: item.cart.reduce((acc, item) => acc + item.qty, 0),
-        total: "US$ " + item.totalPrice,
-        status: item.status,
-      });
-  });
   return (
-    <div className="w-full p-8 -z-10">
+    <div className="w-full p-8 z-10">
       <h3 className="text-[22px] font-Poppins pb-2">Overview</h3>
       <div className="w-full block 800px:flex items-center justify-between">
         <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-white shadow rounded px-2 py-5">
@@ -145,7 +86,41 @@ const ShopInfoSection = () => {
       <br />
       <h3 className="text-[22px] font-Poppins pb-2">Latest Orders</h3>
       <div className="w-full min-h-[45vh] bg-white rounded">
-  
+      <table className='w-[90%]'>
+        <thead className='bg-[#ebe1ed] border-b-2 border-gray-200 '>
+          <tr>
+            
+            <td className='p-3 text-sm font-semibold tracking-wide text-left ' >OrderId</td>
+            <td className='p-3 text-sm font-semibold tracking-wide text-left' >status</td>
+            <td className='p-3 text-sm font-semibold tracking-wide text-left' >itemsQty</td>
+            <td className='p-3 text-sm font-semibold tracking-wide text-left' >total</td>
+            <td className='p-3 text-sm font-semibold tracking-wide text-left' >Created at</td>
+          </tr>
+        </thead>
+        <tbody>
+          {orders && orders.map((item,index) => (
+        
+            <tr className='bg-gray-50' key={index}>
+                <td className="p-3 text-sm text-[#149bc2] cursor-pointer hover:text-black duration-300" >
+                    <Link to={`/order/${item._id}`}>
+                  {item._id} 
+
+            </Link>
+                  </td>
+                <td className={`p-3 text-sm text-gray-700 `} ><span className={`p-2 rounded-lg ${ item.status === 'Delivered'? 'bg-green-200  text-green-800': item.status === 'Processing' ? 'bg-yellow-200 text-yellow-800' : 'bg-red-200 text-red-800' }`}> {item.status}</span>  </td>
+                <td className="p-3 text-sm text-gray-700 font-semibold" >{item.cart.length} </td>
+                <td className="p-3 text-sm text-gray-700" >{item.totalPrice}$ </td>
+                <td className="p-3 text-sm text-gray-700" >{moment(item.createdAt).format('YYYY-mm-dd')}</td>
+              
+             
+            </tr>
+
+          ))
+           
+          }
+
+        </tbody>
+        </table>
       </div>
     </div>
   );

@@ -10,7 +10,8 @@ import ProfileContent from "../components/ProfileContent";
 
 const ProfilePage = () => {
     const { loading } = useSelector((state) => state.user);
-    const [active, setActive] = useState(1);
+    const [active, setActive] = useState(2);
+    
   
     return (
       <div>

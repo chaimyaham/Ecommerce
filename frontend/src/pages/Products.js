@@ -73,8 +73,8 @@ const Products = () => {
       <UserInfo />
 
        {/* search box */}
-       <div className=" flex justify-between items-center p-10 ">
-       <div className="w-[25%] relative ml-8">
+       <div className=" flex flex-col justify-between flex-wrap  p-10 ">
+       <div className=" sm:w-full md:w-[25%] lg:w-[25%] relative  ">
             <input
               type="text"
               placeholder="Search..."
@@ -87,12 +87,12 @@ const Products = () => {
               className="absolute right-3 top-1 cursor-pointer"
             />
             {searchData !== null && searchTerm !== "" ? (
-              <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2  p-4">
+              <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2  z-[9] w-full  p-4">
                 {searchData &&
                   searchData.map((i, index) => {
                     return (
                       <Link to={`/product/${i._id}`}>
-                        <div className="w-full flex items-start py-3">
+                        <div className="w-full p-2 flex items-start py-3 hover:bg-white">
                           <img
                             src={`${backend_url}${i.images[0]}`}
                             alt=""
@@ -111,18 +111,19 @@ const Products = () => {
             
           </div>
 
-          <div onClick={() => setDropDown(!dropDown)}>
-            <div className="relative h-[60px] w-[270px] hidden 1000px:block">
-              <BiCategory size={30} className="absolute top-3 left-2" />
+          <div className="" onClick={() => setDropDown(!dropDown)}>
+            <div className="relative h-[60px] w-[270px]">
+              <BiCategory size={30} fill="white" className="absolute top-3 left-2" />
               <button
-                className={`h-[100%] w-full flex justify-between items-center pl-10 bg-gray-200 font-sans text-lg font-[500] select-none rounded-t-md`}
+                className={`h-[100%] text-white w-full flex justify-between items-center pl-10 bg-[#bf9b3c] font-sans text-lg font-[500] select-none rounded-b-md`}
               >
                 All Categories
               </button>
               <IoIosArrowDown
                 size={20}
-                className="absolute right-2 top-4 cursor-pointer"
+                className="absolute right-2 top-5 cursor-pointer"
                 onClick={() => setDropDown(!dropDown)}
+                fill="white"
               />
               {dropDown ? (
                 <DropDown

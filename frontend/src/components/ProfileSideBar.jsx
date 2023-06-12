@@ -23,10 +23,9 @@ import { server } from "../server";
 const ProfileSideBar = ({ active, setActive }) => {
   const menus = [
     { name: "dahboard", number: 2, icon: AiFillDashboard },
-    { name: "My Infos", number: 1, icon: AiOutlineUser },
+    { name: "Update My Infos", number: 1, icon: AiOutlineUser },
     { name: "My orders", number: 3, icon: FaClipboardList },
-    { name: "My cart", number: 6, icon: AiOutlineShoppingCart },
-    { name: "My wishList", number: 7, icon: AiTwotoneHeart },
+  
 
     { name: "Inbox", number: 4, icon: AiFillMessage },
     {name:'track Order',number:5 ,icon:MdOutlineTrackChanges},
@@ -65,7 +64,9 @@ const ProfileSideBar = ({ active, setActive }) => {
           <span
             onClick={() => {
               setActive(item.number)
-            if(item.number===8){logoutHandler()}}}
+            if(item.number===8){logoutHandler()}
+             if(item.number===4){navigate("/inbox")} 
+          }}
             key={i}
             className={`pl-3 ${
               active === item.number ? "text-[#f3efef]" : ""

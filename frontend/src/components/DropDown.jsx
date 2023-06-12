@@ -1,4 +1,5 @@
 import React from 'react'
+import { BiBorderAll } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom'
 
 const DropDown = ({categoriesData,setDropDown}) => {
@@ -8,11 +9,23 @@ const DropDown = ({categoriesData,setDropDown}) => {
         setDropDown(false);
         window.location.reload();
     }
+
   return (
-    <div className='dropDownCategory'>
+    <div className='dropDownCategory bg-[#d8eef4]'>
+            <div className='cursor-pointer flex items-center gap-10 hover:bg-gray-50 p-2'  onClick={()=>{
+                categoriesData=null;
+                navigate('/products')
+                window.location.reload()
+            }}>
+
+<BiBorderAll size={25} className='ml-2' />
+<h4  className=''>All Product</h4>
+
+</div>
+        
         {
             categoriesData && categoriesData.map((i,index)=>(
-                <div key={index} onClick={()=>submitHandler(i)}>
+                <div className='cursor-pointer flex items-center gap-10 hover:bg-gray-50 p-2' key={index} onClick={()=>submitHandler(i)}>
 
                     <img src={i.image_Url} alt="" style={{
                         width:"25px",
@@ -23,7 +36,7 @@ const DropDown = ({categoriesData,setDropDown}) => {
                 
                 
                     }} />
-                    <h4>{i.title}</h4>
+                    <h4 className=''>{i.title}</h4>
 
                 </div>
             ))

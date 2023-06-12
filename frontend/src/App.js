@@ -32,6 +32,11 @@ import PaymentPage from "./pages/PaymentPage";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccessPage from "./components/checkout/OrderSuccessPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
+import UserInbox from "./components/messages/UserInbox";
+import ShopAllOrders from "./components/shop/ShopAllOrders";
+import ShopAllProducts from "./components/shop/ShopAllProducts";
+import ShopInboxPage from "./components/shop/ShopInboxPage";
 
 
 function App() {
@@ -107,6 +112,22 @@ function App() {
           }
         />
 
+<Route
+          path="/dashboard-orders"
+          element={
+            <SellerProtectedRoute>
+              <ShopAllOrders />
+            </SellerProtectedRoute>
+          }
+        />
+   <Route
+          path="/dashboard-messages"
+          element={
+            <SellerProtectedRoute>
+              <ShopInboxPage />
+            </SellerProtectedRoute>
+          }
+        />
       <Route
           path="/shop/:id"
           element={
@@ -124,6 +145,15 @@ function App() {
             </SellerProtectedRoute>
           }
         />
+
+<Route
+          path="/dashboard-products"
+          element={
+            <SellerProtectedRoute>
+              <ShopAllProducts />
+            </SellerProtectedRoute>
+          }
+        />
           <Route
           path="/checkout"
           element={
@@ -133,6 +163,16 @@ function App() {
           }
         />
             <Route path="/order/success" element={<OrderSuccessPage />} />
+            <Route path="/product/:id" element={<ProductDetailsPage />} />
+
+            <Route
+          path="/inbox"
+          element={
+            <ProtectedRoute>
+              <UserInbox />
+            </ProtectedRoute>
+          }
+        />
 
 
 

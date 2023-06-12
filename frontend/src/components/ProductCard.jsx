@@ -64,7 +64,9 @@ const ProductCard = ({ data,isEvent }) => {
   return (
     
       <div className="   bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md cursor-pointer hover:bg-gray-300 duration-300 ">
-        <img className="w-full rounded-md h-[200px] object-cover  " src={`${backend_url}${data.images && data.images[0]}`} alt=""  />
+       <Link to={`/product/${data._id}`}>
+       <img className="w-full rounded-md h-[200px] object-cover  " src={`${backend_url}${data.images && data.images[0]}`} alt=""  />
+       </Link>
         <div className="p-5 flex flex-col gap-3 ">
           <div className="flex items-center gap-2 ">
             <span className="badge"> stock ready</span>
