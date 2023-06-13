@@ -176,7 +176,7 @@
     },
     {
       id: 2,
-      title: "cosmetics and body care",
+      title: "keyboard and mouses",
       subTitle: "",
       image_Url:
         "https://indian-retailer.s3.ap-south-1.amazonaws.com/s3fs-public/2021-07/kosme1.png",

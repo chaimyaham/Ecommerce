@@ -77,7 +77,7 @@ const Products = () => {
        <div className=" sm:w-full md:w-[25%] lg:w-[25%] relative  ">
             <input
               type="text"
-              placeholder="Search..."
+              placeholder="Search by product name..."
               value={searchTerm}
               onChange={handleSearchChange}
               className="h-[40px] w-full px-2 border-[#bf9b3c] border-[2px] rounded-md focus:border-[#169cc2]"
@@ -112,12 +112,12 @@ const Products = () => {
           </div>
 
           <div className="" onClick={() => setDropDown(!dropDown)}>
-            <div className="relative h-[60px] w-[270px]">
+            <div className="relative h-[60px] sm:w-full md:w-[25%] lg:w-[25%]">
               <BiCategory size={30} fill="white" className="absolute top-3 left-2" />
               <button
                 className={`h-[100%] text-white w-full flex justify-between items-center pl-10 bg-[#bf9b3c] font-sans text-lg font-[500] select-none rounded-b-md`}
               >
-                All Categories
+                Search by Category
               </button>
               <IoIosArrowDown
                 size={20}

@@ -2,8 +2,8 @@ import React, { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import gsap from "gsap";
-import kech from '../images/collection-lamps-store-with-dark-background.jpg';
-import essawira from '../images/beautiful-girl-traditional-carpet-shop-goreme-city-cappadocia-turkey.jpg';
+import kech from '../images/ban1.jpg';
+import essawira from '../images/ban2.jpg';
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { server } from "../server";
@@ -11,10 +11,10 @@ import { toast } from "react-toastify";
 
 const cities=[
   {
-    name:'Event1',image:kech
+    name:'Easy',image:kech
   },
   {
-    name:'Event2',image:essawira
+    name:'Quality',image:essawira
   },
 ]
 
@@ -22,6 +22,7 @@ const cities=[
 const Hamburger = ({ state }) => {
 
   const { isAuthenticated} = useSelector((state) => state.user);
+  const { isSeller} = useSelector((state) => state.seller);
   const navigate=useNavigate();
   
   const logoutHandler = () => {
@@ -192,9 +193,13 @@ const Hamburger = ({ state }) => {
                     </Link>
                   </li>
                   <li onMouseEnter={(e)=>handleHover(e)} onMouseOut={e=>handleHoverExit(e)} >
-                    <Link ref={(el) => (line2 = el)} to="/">
-                      Best Selling
-                    </Link>
+
+                    {isSeller?( <Link ref={(el) => (line2 = el)} to="/dashboard">
+                      Seller Dashboard
+                    </Link>):( <Link ref={(el) => (line2 = el)} to="/dashboard">
+                      Become Seller
+                    </Link>)}
+                   
                   </li>
                   <li onMouseEnter={(e)=>handleHover(e)} onMouseOut={e=>handleHoverExit(e)}>
                     <Link ref={(el) => (line3 = el)} to="/products">
@@ -219,7 +224,7 @@ const Hamburger = ({ state }) => {
                   ipsam aspernatur eveniet tempore earum
                 </p> */}
                   <div className="locations">
-                Events:
+                Website:
              {cities.map(el=>(
               <span key={el.name} onMouseEnter={()=>handleCity(el.image)} onMouseOut={handleCityReturn} >{el.name}</span>
              ))}
