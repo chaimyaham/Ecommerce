@@ -37,7 +37,7 @@
 .App{
   max-width: 1900px;
   margin: auto;
-  background-image: url("");
+
   background-size: contain;
   font-family: var(--font-family-poppins);
   

@@ -219,7 +219,7 @@ const PaymentInfo = ({
             onClick={() => setSelect(1)}
           >
             {select === 1 ? (
-              <div className="w-[13px] h-[13px] bg-[#1d1a1acb] rounded-full" />
+              <div className="w-[13px] h-[13px] bg-green-700 rounded-full" />
             ) : null}
           </div>
           <h4 className="text-[18px] pl-2 font-[600] text-[#000000b1]">
@@ -374,7 +374,7 @@ const PaymentInfo = ({
             onClick={() => setSelect(3)}
           >
             {select === 3 ? (
-              <div className="w-[13px] h-[13px] bg-[#1d1a1acb] rounded-full" />
+              <div className="w-[13px] h-[13px] bg-green-700 rounded-full" />
             ) : null}
           </div>
           <h4 className="text-[18px] pl-2 font-[600] text-[#000000b1]">
@@ -402,7 +402,7 @@ const PaymentInfo = ({
 const CartData = ({ orderData }) => {
   const shipping = orderData?.shipping?.toFixed(2);
   return (
-    <div className="w-full bg-[#fff] rounded-md p-5 pb-8">
+    <div className="w-full bg-[#FFF] rounded-md p-5 pb-8">
       <div className="flex justify-between">
         <h3 className="text-[16px] font-[400] text-[#000000a4]">subtotal:</h3>
         <h5 className="text-[18px] font-[600]">${orderData?.subTotalPrice}</h5>
@@ -417,9 +417,11 @@ const CartData = ({ orderData }) => {
         <h3 className="text-[16px] font-[400] text-[#000000a4]">Discount:</h3>
         <h5 className="text-[18px] font-[600]">{orderData?.discountPrice? "$" + orderData.discountPrice : "-"}</h5>
       </div>
-      <h5 className="text-[18px] font-[600] text-end pt-3">
-        ${orderData?.totalPrice}
-      </h5>
+      <div className="flex justify-between items-center border-b pb-3">
+        <h3 className="text-[16px] font-[600] text-[#000000a4]">Total:</h3>
+       
+      <h5 className="text-[18px] font-[600] text-end pt-3 text-green-700">${orderData?.totalPrice}</h5>
+      </div>
       <br />
     </div>
   );

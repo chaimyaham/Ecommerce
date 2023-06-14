@@ -208,6 +208,7 @@ const UserInbox = () => {
       {!open && (
         <>
           <UserInfo />
+         
           <div className='text-center'>
         <h5 className='text-gray-500 '> conversations</h5>
         <h1 className='text-4xl w-96 mx-auto leading-normal font-bold mb-12 whitespace-pre align-middle '>All conversations Here</h1>

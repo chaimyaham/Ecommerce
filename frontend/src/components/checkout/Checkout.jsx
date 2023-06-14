@@ -161,7 +161,7 @@ const ShippingInfo = ({
 }) => {
   return (
     <div className="w-full 800px:w-[95%] bg-white rounded-md p-5 pb-8">
-      <h5 className="text-[18px] font-[500]">Shipping Address</h5>
+      <h5 className="text-[18px] font-[500]">Fill the Address please</h5>
       <br />
       <form>
         <div className="w-full flex pb-3">
@@ -330,9 +330,13 @@ const CartData = ({
           - {discountPercentenge ? "$" + discountPercentenge.toString() : null}
         </h5>
       </div>
-      <h5 className="text-[18px] font-[600] text-end pt-3">${totalPrice}</h5>
+      <div className="flex justify-between items-center border-b pb-3">
+        <h3 className="text-[16px] font-[600] text-[#000000a4]">Total:</h3>
+       
+      <h5 className="text-[18px] font-[600] text-end pt-3 text-green-700">${totalPrice}</h5>
+      </div>
       <br />
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <input
           type="text"
           className={`${styles.input} h-[40px] pl-2`}
@@ -347,7 +351,7 @@ const CartData = ({
           value="Apply code"
           type="submit"
         />
-      </form>
+      </form> */}
     </div>
   );
 };

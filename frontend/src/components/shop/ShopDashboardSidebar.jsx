@@ -31,7 +31,7 @@ const ShopDashboardSidebar = ({ active, setActive }) => {
     { name: "Withdraw Money", number: 5, icon: FaMoneyBill },
 
     { name: "Inbox", number: 6, icon: AiFillMessage,link:"/dashboard-messages" },
-    {name:'Coupons',number:7 ,icon:AiFillGift},
+   
     {name:'Setting',number:7 ,icon: AiTwotoneSetting },
     { name: "Logout", number: 8, icon: AiOutlineLogout },
   ];

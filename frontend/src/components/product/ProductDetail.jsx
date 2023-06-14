@@ -222,15 +222,15 @@ const ProductDetail = ({ data }) => {
                         {data.shop.name}
                       </h3>
                     </Link>
-                    <h5 className="pb-3 text-[15px]">
+                    {/* <h5 className="pb-3 text-[15px]">
                       ({averageRating}/5) Ratings
-                    </h5>
+                    </h5> */}
                   </div>
                   <div
                     className={`${styles.button} bg-[#8970d2] z-[] mt-4 !rounded !h-11`}
                     onClick={handleMessageSubmit}
                   >
-                    <span className="text-white flex items-center">
+                    <span className="text-black  flex items-center">
                      Send Message To The seller <AiOutlineMessage className="ml-1" />
                     </span>
                   </div>

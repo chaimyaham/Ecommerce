@@ -8,7 +8,7 @@ const CheckoutPage = () => {
   return (
     <div>
       <UserInfo/>
-      <CheckoutSteps/>
+      {/* <CheckoutSteps/> */}
       <Checkout/>
 
       <Footer/>
