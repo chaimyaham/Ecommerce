@@ -175,7 +175,7 @@ const Hamburger = ({ state }) => {
   }
 
   return (
-    <div ref={(el) => (menu = el)} className="hamburger-menu">
+    <div ref={(el) => (menu = el)} className="hamburger-menu ">
       <div
         ref={(el) => (revealMenubg = el)}
         className="menu-second-bg-cl"

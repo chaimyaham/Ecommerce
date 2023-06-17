@@ -5,7 +5,7 @@ nav{
     align-items: center;
     justify-content: space-between;
     padding: 5px 40px;
-    z-index: 10;
+    z-index: 100;
  
    
 }
@@ -21,7 +21,7 @@ nav button{
 
 .hamburger-menu{
     display: none;
-    z-index: 9;
+    z-index: 90;
     position: fixed;
     top: 0;
     bottom: 0;

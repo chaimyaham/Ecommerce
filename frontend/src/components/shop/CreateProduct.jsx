@@ -116,7 +116,7 @@ const CreateProduct = () => {
           </select>
         </div>
         <br />
-        <div>
+        {/* <div>
           <label className="pb-2">Tags</label>
           <input
             type="text"
@@ -127,7 +127,7 @@ const CreateProduct = () => {
             placeholder="Enter your product tags..."
           />
         </div>
-        <br />
+        <br /> */}
         <div>
           <label className="pb-2">Original Price</label>
           <input

@@ -37,6 +37,7 @@ import UserInbox from "./components/messages/UserInbox";
 import ShopAllOrders from "./components/shop/ShopAllOrders";
 import ShopAllProducts from "./components/shop/ShopAllProducts";
 import ShopInboxPage from "./components/shop/ShopInboxPage";
+import ShopSettingPage from "./pages/ShopSettingPage";
 
 
 function App() {
@@ -151,6 +152,14 @@ function App() {
           element={
             <SellerProtectedRoute>
               <ShopAllProducts />
+            </SellerProtectedRoute>
+          }
+        />
+<Route
+          path="/dashboard-setting"
+          element={
+            <SellerProtectedRoute>
+              <ShopSettingPage />
             </SellerProtectedRoute>
           }
         />

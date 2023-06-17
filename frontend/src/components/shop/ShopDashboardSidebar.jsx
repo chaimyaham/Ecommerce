@@ -28,11 +28,11 @@ const ShopDashboardSidebar = ({ active, setActive }) => {
     { name: "Add new Product", number: 2, icon: MdAddBusiness, link:"/dashboard-create-product" },
     { name: "All My Products", number: 3, icon: MdOutlineShopTwo ,link:"/dashboard-products"},
     { name: "list of Orders", number: 4, icon: FaClipboardList,link:"/dashboard-orders" },
-    { name: "Withdraw Money", number: 5, icon: FaMoneyBill },
+    // { name: "Withdraw Money", number: 5, icon: FaMoneyBill },
 
     { name: "Inbox", number: 6, icon: AiFillMessage,link:"/dashboard-messages" },
    
-    {name:'Setting',number:7 ,icon: AiTwotoneSetting },
+    {name:'Setting',number:7 ,icon: AiTwotoneSetting, link:"/dashboard-setting" },
     { name: "Logout", number: 8, icon: AiOutlineLogout },
   ];
   const [open, setOpen] = useState(true);

@@ -43,6 +43,9 @@
   
 
 }
+.cart, .wishlist{
+  z-index: 100;
+}
 
 
 .loginPageMain {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   AiFillHeart,
   AiFillStar,
@@ -21,12 +21,14 @@ import { toast } from "react-toastify";
 // import Ratings from "../Products/Ratings";
 import { backend_url } from "../server";
 
+
 const ProductCard = ({ data,isEvent }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
   const [click, setClick] = useState(false);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     if (wishlist && wishlist.find((i) => i._id === data._id)) {
@@ -60,6 +62,8 @@ const ProductCard = ({ data,isEvent }) => {
       }
     }
   };
+
+
 
   return (
     
