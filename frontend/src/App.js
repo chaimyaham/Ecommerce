@@ -38,6 +38,7 @@ import ShopAllOrders from "./components/shop/ShopAllOrders";
 import ShopAllProducts from "./components/shop/ShopAllProducts";
 import ShopInboxPage from "./components/shop/ShopInboxPage";
 import ShopSettingPage from "./pages/ShopSettingPage";
+import ShopOrderDetails from "./pages/ShopOrderDetails";
 
 
 function App() {
@@ -182,7 +183,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+               <Route
+          path="/order/:id"
+          element={
+            <SellerProtectedRoute>
+              <ShopOrderDetails />
+            </SellerProtectedRoute>
+          }
+        />
 
 
       </Routes>

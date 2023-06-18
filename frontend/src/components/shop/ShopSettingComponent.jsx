@@ -72,7 +72,7 @@ const ShopSettingComponent = () => {
                   avatar ? URL.createObjectURL(avatar) : `${backend_url}/${seller.avatar}`
                 }
                 alt=""
-                className="w-[200px] h-[200px] rounded-full cursor-pointer"
+                className="w-[150px] h-[150px] rounded-full cursor-pointer"
               />
               <div className="w-[30px] h-[30px] bg-[#E3E9EE] rounded-full flex items-center justify-center cursor-pointer absolute bottom-[10px] right-[15px]">
                 <input
@@ -91,10 +91,10 @@ const ShopSettingComponent = () => {
           {/* shop info */}
           <form
             aria-aria-required={true}
-            className="flex flex-col items-center"
+            className="grid grid-cols-1 800px:grid-cols-2"
             onSubmit={updateHandler}
           >
-            <div className="w-[100%] flex items-center flex-col 800px:w-[50%] mt-5">
+            <div className="w-[100%] flex items-center flex-col  mt-5">
               <div className="w-full pl-[3%]">
                 <label className="block pb-2">Shop Name</label>
               </div>
@@ -107,7 +107,7 @@ const ShopSettingComponent = () => {
                 required
               />
             </div>
-            <div className="w-[100%] flex items-center flex-col 800px:w-[50%] mt-5">
+            <div className="w-[100%] flex items-center flex-col  mt-5">
               <div className="w-full pl-[3%]">
                 <label className="block pb-2">Shop description</label>
               </div>
@@ -123,7 +123,7 @@ const ShopSettingComponent = () => {
                 className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
               />
             </div>
-            <div className="w-[100%] flex items-center flex-col 800px:w-[50%] mt-5">
+            <div className="w-[100%] flex items-center flex-col  mt-5">
               <div className="w-full pl-[3%]">
                 <label className="block pb-2">Shop Address</label>
               </div>
@@ -137,7 +137,7 @@ const ShopSettingComponent = () => {
               />
             </div>
   
-            <div className="w-[100%] flex items-center flex-col 800px:w-[50%] mt-5">
+            <div className="w-[100%] flex items-center flex-col  mt-5">
               <div className="w-full pl-[3%]">
                 <label className="block pb-2">Shop Phone Number</label>
               </div>
@@ -151,7 +151,7 @@ const ShopSettingComponent = () => {
               />
             </div>
   
-            <div className="w-[100%] flex items-center flex-col 800px:w-[50%] mt-5">
+            <div className="w-[100%] flex items-center flex-col  mt-5">
               <div className="w-full pl-[3%]">
                 <label className="block pb-2">Shop Zip Code</label>
               </div>
@@ -165,11 +165,11 @@ const ShopSettingComponent = () => {
               />
             </div>
   
-            <div className="w-[100%] flex items-center flex-col 800px:w-[50%] mt-5">
+            <div className="w-[100%] flex items-center flex-col  mt-12">
               <input
                 type="submit"
                 value="Update Shop"
-                className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+                className={` !w-[95%]  h-[35px] border border-[#8C2A8E] text-center text-[#8C2A8E] rounded-md mt-1 cursor-pointer hover:bg-[#8C2A8E] hover:text-white duration-300`}
                 required
                 readOnly
               />
