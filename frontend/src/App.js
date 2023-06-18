@@ -39,6 +39,13 @@ import ShopAllProducts from "./components/shop/ShopAllProducts";
 import ShopInboxPage from "./components/shop/ShopInboxPage";
 import ShopSettingPage from "./pages/ShopSettingPage";
 import ShopOrderDetails from "./pages/ShopOrderDetails";
+import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
+import AdminPage from "./pages/AdminPage";
+import AdminOrderPage from "./pages/AdminOrderPage";
+import AdminProductsPage from "./pages/AdminProductsPage";
+import AdminAllSellers from "./components/admin/AdminAllSellers";
+import AdminSellerPage from "./pages/AdminSellerPage";
+import AdminUsersPage from "./pages/AdminUsersPage";
 
 
 function App() {
@@ -189,6 +196,46 @@ function App() {
             <SellerProtectedRoute>
               <ShopOrderDetails />
             </SellerProtectedRoute>
+          }
+        />
+           <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedAdminRoute>
+              <AdminPage />
+            </ProtectedAdminRoute>
+          }
+        />
+           <Route
+          path="/admin-all-orders"
+          element={
+            <ProtectedAdminRoute>
+              <AdminOrderPage />
+            </ProtectedAdminRoute>
+          }
+        />
+           <Route
+          path="/admin-all-products"
+          element={
+            <ProtectedAdminRoute>
+              <AdminProductsPage />
+            </ProtectedAdminRoute>
+          }
+        />
+           <Route
+          path="/admin-all-sellers"
+          element={
+            <ProtectedAdminRoute>
+              <AdminSellerPage />
+            </ProtectedAdminRoute>
+          }
+        />
+           <Route
+          path="/admin-all-users"
+          element={
+            <ProtectedAdminRoute>
+              <AdminUsersPage />
+            </ProtectedAdminRoute>
           }
         />
 

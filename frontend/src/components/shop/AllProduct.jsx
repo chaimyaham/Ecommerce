@@ -62,7 +62,7 @@ const AllProduct = () => {
                     
                         <tr className='bg-gray-50' key={index}>
                             <td className="p-3 text-sm text-[#149bc2] cursor-pointer hover:text-black duration-300" >
-                                <Link to={`/order/${item._id}`}>
+                                <Link to={`/product/${item._id}`}>
                               {item._id} 
             
                         </Link>
