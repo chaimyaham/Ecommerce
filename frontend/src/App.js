@@ -46,6 +46,7 @@ import AdminProductsPage from "./pages/AdminProductsPage";
 import AdminAllSellers from "./components/admin/AdminAllSellers";
 import AdminSellerPage from "./pages/AdminSellerPage";
 import AdminUsersPage from "./pages/AdminUsersPage";
+import ShopPreviewPage from "./components/shop/ShopPreviewPage";
 
 
 function App() {
@@ -103,7 +104,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+      <Route path="/shop/preview/:id" element={<ShopPreviewPage />} />
       <Route path="/shop-create" element={<ShopSignUpPage />} />
         <Route path="/shop-login" element={<ShopLoginPage />} />
         <Route

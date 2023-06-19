@@ -8,20 +8,22 @@ const ActivationPage = () => {
   const  {activationToken}=useParams();
   const [error,setError]=useState(false);
   useEffect(()=>{
-    if(activationToken){
-      const activationEmail=async()=>{
-        try {
-          const res=await axios.post(`${server}/user/activation`,{
+    if (activationToken) {
+      const sendRequest = async () => {
+        await axios
+          .post(`${server}/user/activation`, {
             activationToken,
+          })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            setError(true);
           });
-          console.log(res.data.message);
-        } catch (err) {
-          console.log(err.response.data.message);
-          setError(true)
-          
-        };
       };
-      activationEmail();
+      sendRequest();
+      console.log('twice')
+    
 
 
     }

@@ -12,8 +12,8 @@ const sendToken=require('../utils/jwtToken');
 const { isAuthenticated, isAdmin } = require("../middleware/auth");
 
 router.post('/create-user', upload.single("file"), async (req,res,next)=>{
-    const {name,email,password}=req.body;
-    try{
+  try{
+      const {name,email,password}=req.body;
         const userEmail=await User.findOne({email});
 
         if(userEmail){
@@ -34,8 +34,7 @@ router.post('/create-user', upload.single("file"), async (req,res,next)=>{
         const user={name,email,password,avatar};
     
     
-    //    const newUser=await User.create(user);
-    //    res.status(201).json({success:true,newUser});
+
 
 
     const activationToken= createActivationToken(user);
